@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../Models/UserModel.dart';
 import '../Services/ApiServices.dart';
+import '../Utility/Snackbars/snackbarutils.dart';
 
 
 class RegistrationController extends GetxController {
@@ -18,9 +19,8 @@ class RegistrationController extends GetxController {
     required String role,
     required String phoneNumber,
   }) async {
+    isLoading(true);
     try {
-      isLoading(true);  // Show loading indicator
-
       ApiResponse response = await _registrationService.registerUser(
         email: email,
         password: password,
@@ -29,15 +29,21 @@ class RegistrationController extends GetxController {
       );
 
       if (response.success) {
-        user.value = response.data;
+        user.value = response.data as User?;
         errorMessage.value = "";
+        SnackbarUtils.showSuccess(response.message ?? "User registered successfully!");
       } else {
-        errorMessage.value = response.message;
+        _handleError(response.message);
       }
     } catch (e) {
-      errorMessage.value = 'Error: $e';
+      _handleError("Unexpected error: $e");
     } finally {
-      isLoading(false);  // Hide loading indicator
+      isLoading(false);
     }
+  }
+
+  void _handleError(String? message) {
+    errorMessage.value = message ?? "An unexpected error occurred.";
+    SnackbarUtils.showError(errorMessage.value);
   }
 }

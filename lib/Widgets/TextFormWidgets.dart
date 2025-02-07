@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class TextFormWidget extends StatelessWidget {
   final String labelTextInput;
   final TextEditingController input;
-  final String? Function(String?) validatorFunction;
+  final String? Function(String?)? validatorFunction;
 
   const TextFormWidget({
     super.key,
     required this.labelTextInput,
-    required this.validatorFunction,
     required this.input,
+    this.validatorFunction
   });
 
   @override

@@ -4,7 +4,7 @@ import '../Models/UserModel.dart';
 
 
 class RegistrationService {
-  final String apiUrl = 'https://9eed-103-226-201-177.ngrok-free.app/api/v1/User/register';
+  final String apiUrl = 'https://68af-103-226-200-37.ngrok-free.app/api/v1/User/register';
 
   Future<ApiResponse> registerUser({
     required String email,

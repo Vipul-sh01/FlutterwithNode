@@ -11,6 +11,11 @@ class AppConstants {
   // Camera Button Styling
   static const Color cameraButtonColor = Colors.grey;
   static const Color buttonButtonColor = Colors.blueAccent;
+  static const Color snackBarColor = Colors.green;
+  static const Color snackBarSecColor = Colors.red;
+  static const Color textColor = Colors.white;
+
+
   static const double cameraIconSize = 24.0;
   static const EdgeInsets cameraButtonPadding = EdgeInsets.all(6);
 
